@@ -1,24 +1,26 @@
 class Movie
-    attr_accessor :link, :title, :year, :country, :date, :zhanre, :time, :rating, :director, :actors, :month
+    attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :month
 
-    def initialize(link, title, year, country, date, zhanre, time, rating, director, actors)
+    def initialize(link, title, year, country, date, genre, time, rating, director, actors)
       @link = link
       @title = title
-      @year = year
+      @year = year.to_i
       @country = country
       @date = date
-      @zhanre = zhanre.split(',')
+      @genre = genre.split(',')
       @time = time
       @rating = rating
       @director = director
       @actors = actors.split(',')
-      @month = date.length == 10 ? Date.parse(date).strftime("%B") : nil
+    end
+    def month 
+        @date.length == 10 ? Date.parse(date).strftime("%B") : nil
     end
     def to_s
-        "#{@title} (#{@date}; #{@zhanre}) - #{@time}"
+        "#{@title} (#{@date}; #{@genre}) - #{@time}"
     end
-    def has_genre?(zhanre_find)
-        @zhanre.include? zhanre_find
+    def has_genre?(genre_find)
+        @genre.include? genre_find
     end
 end
 
