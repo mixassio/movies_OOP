@@ -1,11 +1,14 @@
 require_relative 'movie.rb'
 require 'CSV'
 
-
 class MovieCollection
+    attr_reader :genres
+
     def initialize(path)
+        @genres = []
         @movies = IO.read(path).split("\n").map{|movie| movie.split("|")}.map{|movie|
-            Movie.new(*movie)
+            @genres = [*@genres, *movie[5].split(',')].uniq
+            Movie.new(*movie, self)
         }
     end
     def all
@@ -15,7 +18,7 @@ class MovieCollection
         @movies.sort_by(&field)
     end
     def stats(field)
-        @movies.map(&field).flatten.group_by(&:itself).map{|k, v| {k => v.length}}
+        @movies.flat_map(&field).group_by(&:itself).map{|k, v| {k => v.length}}
     end
     def filter(field)
         field.reduce(@movies){|acc, (key, val)| acc.select{|el| 

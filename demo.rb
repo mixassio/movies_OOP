@@ -34,3 +34,7 @@ p '***filter-range***'
 p g.filter(year: 2001..2005)
 p '***filter-fullname***'
 p g.filter(title: "The Terminator")
+p '***Array-of-genresname***'
+p g.all.first.owner
+p '***errors-then-genres-not-found***'
+p g.all.first.has_genre?('Tragedy')
