@@ -18,7 +18,7 @@ class MovieCollection
         @movies.sort_by(&field)
     end
     def stats(field)
-        @movies.flat_map(&field).group_by(&:itself).map{|k, v| {k => v.length}}
+        @movies.flat_map(&field).group_by(&:itself).map{|k, v| [k, v.length]}.to_h
     end
     def filter(field)
         field.reduce(@movies){|acc, (key, val)| acc.select{|el| 

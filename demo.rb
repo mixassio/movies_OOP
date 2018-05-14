@@ -38,3 +38,5 @@ p '***Array-of-genresname***'
 p g.all.first.owner
 p '***errors-then-genres-not-found***'
 p g.all.first.has_genre?('Tragedy')
+
+p g.stats(:director)
