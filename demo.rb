@@ -10,7 +10,7 @@ g = MovieCollection.new(file_name)
 p g.all.first.has_genre?('Drama')
 p g.all.first.actors
 p '***************************'
-p 'stats'
+p '***stats***'
 p '***************************'
 puts g.stats(:actors)
 p '***************************'
@@ -35,7 +35,7 @@ p g.filter(year: 2001..2005)
 p '***filter-fullname***'
 p g.filter(title: "The Terminator")
 p '***Array-of-genresname***'
-p g.all.first.owner
+p g.all.last.genres_collections
 p '***************************'
 p '***errors-then-genres-not-found***'
 begin
