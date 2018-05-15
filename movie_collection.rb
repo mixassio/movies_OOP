@@ -21,7 +21,8 @@ class MovieCollection
         @movies.flat_map(&field).group_by(&:itself).map{|k, v| [k, v.length]}.to_h
     end
     def filter(field)
-        field.reduce(@movies){|acc, (key, val)| acc.select{|el| 
-            el.send(key).kind_of?(Array) ? el.send(key).any? {|le| le === val} : val === el.send(key)}}
+        field.reduce(@movies){|acc, (key, val)| acc.select{|el| el.matches?(key, val)}}
     end
 end
+
+

@@ -21,10 +21,11 @@ class Movie
         "#{@title} (#{@date}; #{@genre}) - #{@time}"
     end
     def has_genre?(genre_find)
-        answer = (@owner.include? genre_find) ? (@genre.include? genre_find) : 'genres not found'
+        answer = (@owner.include? genre_find) ? (@genre.include? genre_find) : (raise "Your genres not found")
+    end
+    def matches?(key, val)
+        field = self.send(key)
+        field.kind_of?(Array) ? field.any? {|le| le === val} : val === field
     end
 end
-
-
-
 

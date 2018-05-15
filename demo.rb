@@ -36,7 +36,12 @@ p '***filter-fullname***'
 p g.filter(title: "The Terminator")
 p '***Array-of-genresname***'
 p g.all.first.owner
+p '***************************'
 p '***errors-then-genres-not-found***'
-p g.all.first.has_genre?('Tragedy')
-
+begin
+    g.all.first.has_genre?('Tragedy')
+rescue
+    puts $!.inspect
+end
+p '***************************'
 p g.stats(:director)
