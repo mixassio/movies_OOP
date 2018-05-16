@@ -45,3 +45,5 @@ rescue
 end
 p '***************************'
 p g.stats(:director)
+
+puts g.all.first

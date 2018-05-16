@@ -1,6 +1,6 @@
 class Movie
-    attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :month, :genres_collections
-
+    attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :month
+    attr_accessor :genres_collections
     def initialize(link, title, year, country, date, genre, time, rating, director, actors, owner)
       @link = link
       @title = title
@@ -26,7 +26,6 @@ class Movie
     end
     def matches?(key, val)
         field = self.send(key)
-        #field.kind_of?(Array) ? field.any? {|le| le === val} : val === field
         Array(field).any? {|le| val === le}
     end
 end
