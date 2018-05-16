@@ -43,7 +43,3 @@ begin
 rescue
     puts $!.inspect
 end
-p '***************************'
-p g.stats(:director)
-
-puts g.all.first

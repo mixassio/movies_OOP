@@ -24,5 +24,3 @@ class MovieCollection
         field.reduce(@movies){|acc, (key, val)| acc.select{|el| el.matches?(key, val)}}
     end
 end
-
-
