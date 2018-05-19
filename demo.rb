@@ -4,6 +4,7 @@ require_relative 'movie_collection.rb'
 file_name = ARGV[0] || './movies.txt'
 abort 'No such file' unless File.file?(file_name)
 g = MovieCollection.new(file_name)
+
 p g.all.first.has_genre?('Drama')
 p g.all.first.actors
 p '***************************'
@@ -20,19 +21,19 @@ p '***************************'
 puts g.stats(:year)
 p '***************************'
 p '***filter-re***'
-p g.filter(title: /terminator/i)
+puts g.filter(title: /terminator/i)
 p '***filter-genre***'
-p g.filter(genre: 'Film-Noir')
+puts g.filter(genre: 'Film-Noir')
 p '***filter-year***'
-p g.filter(year: 1950)
+puts g.filter(year: 1950)
 p '***filter-twice***'
-p g.filter(genre: 'Crime', year: 1950)
+puts g.filter(genre: 'Crime', year: 1950)
 p '***filter-range***'
-p g.filter(year: 2001..2005)
+puts g.filter(year: 2001..2005)
 p '***filter-fullname***'
-p g.filter(title: 'The Terminator')
+puts g.filter(title: 'The Terminator')
 p '***Array-of-genresname***'
-p g.all.last.genres_collections
+p g.all.last.owner.genres
 p '***************************'
 p '***errors-then-genres-not-found***'
 begin
@@ -40,3 +41,8 @@ begin
 rescue StandardError
   puts $ERROR_INFO.inspect
 end
+begin
+    g.filter(tle: 'The Terminator')
+  rescue ArgumentError
+    puts $ERROR_INFO.inspect
+  end

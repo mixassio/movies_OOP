@@ -1,5 +1,5 @@
 class Movie
-  attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :month, :genres_collections
+  attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :month, :owner
 
   def initialize(link, title, year, country, date, genre, time, rating, director, actors, owner)
     @link = link
@@ -12,7 +12,7 @@ class Movie
     @rating = rating
     @director = director
     @actors = actors.split(',')
-    @genres_collections = owner.genres
+    @owner = owner
   end
 
   def month
@@ -24,7 +24,7 @@ class Movie
   end
 
   def has_genre?(genre_find)
-    raise 'Your genres not found' unless @genres_collections.include?(genre_find)
+    raise 'Your genres not found' unless @owner.genres.include?(genre_find)
     @genre.include?(genre_find)
   end
 
