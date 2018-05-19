@@ -17,10 +17,10 @@ describe MovieCollection do
       let(:field) { :actors }
       it { is_expected.to include('Marlon Brando' => 3) }
     end
-    # context 'undefined method' do
-    # let(:field) {:foobar}
-    # it { is_expected.to raise_error(NoMethodError)}
-    # end
+    context 'undefined method' do
+      let(:field) {:foobar}
+      it { expect { subject }.to raise_error(NoMethodError)}
+    end
   end
   describe '#filter' do
     subject (:movies3) { MovieCollection.new(file_name).filter(filtres) }
@@ -36,9 +36,9 @@ describe MovieCollection do
       let(:filtres) { { genre: 'Crime', year: 1950..1980 } }
       it { expect(movies3.length).to eq(19) }
     end
-    # context 'undefined filters' do
-    # let(:filtres) { {foo: 'bar'} }
-    # it { is_expected.to raise_error(NoMethodError)}
-    # end
+    context 'undefined filters' do
+      let(:filtres) { {foo: 'bar'} }
+      it { expect { subject }.to raise_error(NoMethodError)}
+    end
   end
 end
