@@ -1,5 +1,7 @@
 class Movie
-  attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :month, :owner
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/ParameterLists
+  attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :owner
 
   def initialize(link, title, year, country, date, genre, time, rating, director, actors, owner)
     @link = link
@@ -14,6 +16,8 @@ class Movie
     @actors = actors.split(',')
     @owner = owner
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/ParameterLists
 
   def month
     Date.parse(date).strftime('%B') if date.length == 10
@@ -24,7 +28,7 @@ class Movie
   end
 
   def has_genre?(genre_find)
-    raise 'Your genres not found' unless @owner.genres.include?(genre_find)
+    raise(ArgumentError, 'Your genres not found') unless @owner.genres.include?(genre_find)
     @genre.include?(genre_find)
   end
 

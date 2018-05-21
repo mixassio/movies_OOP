@@ -6,42 +6,21 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-Lint/DuplicateMethods:
-  Exclude:
-    - 'movie.rb'
-
-# Offense count: 2
-Lint/ParenthesesAsGroupedExpression:
-  Exclude:
-    - 'spec/movie_col_spec.rb'
-
 Metrics/BlockLength:
   Max: 50
-Style/FrozenStringLiteralComment:
-  Enabled: false
+  Include:
+    - 'spec/**/*'
 Metrics/LineLength:
-  Max: 120
+  Max: 100
 Style/Documentation:
   Enabled: false
-Metrics/MethodLength:
-  Max: 30
-Metrics/MethodLength:
-  Max: 11
-Metrics/ParameterLists:
-  Max: 11
 Naming/PredicateName:
   Exclude:
-    - 'spec/**/*'
     - 'movie.rb'
 Style/CaseEquality:
   Exclude:
     - 'movie.rb'
-Style/Documentation:
+Metrics/LineLength:
+  Max: 120
   Exclude:
     - 'spec/**/*'
-    - 'test/**/*'
-    - 'movie.rb'
-    - 'movie_collection.rb'
-Metrics/LineLength:
-  Max: 323

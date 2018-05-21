@@ -15,6 +15,8 @@ describe Movie do
 
   it 'has genre' do
     expect(movie.has_genre?('Drama')).to be true
+    expect(movie.has_genre?('Action')).to be false
+    expect { movie.has_genre?('Tragedy') }.to raise_error(ArgumentError)
   end
 
   it 'to_s' do

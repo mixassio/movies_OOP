@@ -8,7 +8,7 @@ describe MovieCollection do
   end
 
   describe '#stats' do
-    subject (:stats) { movies.stats(field) }
+    subject(:stats) { movies.stats(field) }
     context 'one simple stats' do
       let(:field) { :director }
       it { is_expected.to include('Christopher Nolan' => 7) }
@@ -23,7 +23,7 @@ describe MovieCollection do
     end
   end
   describe '#filter' do
-    subject (:filters) { movies.filter(filtres) }
+    subject(:filters) { movies.filter(filtres) }
     context 'one simple filter' do
       let(:filtres) { { genre: 'Crime' } }
       it { expect(filters.length).to eq(53) }

@@ -29,7 +29,7 @@ class MovieCollection
 
   def filter(field)
     field.reduce(@movies) do |acc, (key, val)|
-      raise(ArgumentError, "filter #{key} not found") unless @fields.include?(key.to_s)
+      raise(ArgumentError, "filter #{key} not found") unless Movie.instance_methods(false).include?(key)
       acc.select { |el| el.matches?(key, val) }
     end
   end
