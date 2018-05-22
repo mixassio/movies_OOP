@@ -1,9 +1,7 @@
 class Movie
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/ParameterLists
   attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :owner
 
-  def initialize(link, title, year, country, date, genre, time, rating, director, actors, owner)
+  def initialize(link, title, year, country, date, genre, time, rating, director, actors, owner) # rubocop:disable Metrics/MethodLength,Metrics/ParameterLists
     @link = link
     @title = title
     @year = year.to_i
@@ -16,8 +14,6 @@ class Movie
     @actors = actors.split(',')
     @owner = owner
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/ParameterLists
 
   def month
     Date.parse(date).strftime('%B') if date.length == 10
