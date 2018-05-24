@@ -1,5 +1,10 @@
 require_relative 'movie.rb'
 require_relative 'movie_collection.rb'
+require_relative 'ancient_movie.rb'
+require_relative 'classic_movie.rb'
+require_relative 'modern_movie.rb'
+require_relative 'new_movie.rb'
+
 
 file_name = ARGV[0] || './movies.txt'
 abort 'No such file' unless File.file?(file_name)
