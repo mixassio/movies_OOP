@@ -52,4 +52,10 @@ begin
     puts $ERROR_INFO.inspect
   end
 
-# test branch
+creater = g.create_movie(1920)
+
+data = ['http://imdb.com/title/tt0111161/?ref_=chttp_tt_1', 'The Shawshank Redemption', '1994', 'USA', '1994-10-14', 'Crime,Drama', '142 min', '9.3', 'Frank Darabont', 'Tim Robbins,Morgan Freeman,Bob Gunton']
+
+movie = creater.call(*data, g)
+
+puts movie
