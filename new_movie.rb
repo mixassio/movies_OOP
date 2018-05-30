@@ -4,6 +4,9 @@ class NewMovie < Movie
 
     def to_s
         years = Date.today.strftime("%Y").to_i - @year
-        "#{@title} - новинка, вышло #{years} лет назад!"
+        "#{@title} - новинка, вышло #{years} лет назад!_____#{@genre}"
+    end
+    def cost 
+        5
     end
 end

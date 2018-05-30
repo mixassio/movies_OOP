@@ -4,7 +4,7 @@ require_relative 'ancient_movie.rb'
 require_relative 'classic_movie.rb'
 require_relative 'modern_movie.rb'
 require_relative 'new_movie.rb'
-
+require_relative 'netflix.rb'
 
 file_name = ARGV[0] || './movies.txt'
 abort 'No such file' unless File.file?(file_name)
@@ -52,10 +52,24 @@ begin
     puts $ERROR_INFO.inspect
   end
 
-creater = g.create_movie(1920)
+creater = Movie.choose_class_movie(1970)
 
 data = ['http://imdb.com/title/tt0111161/?ref_=chttp_tt_1', 'The Shawshank Redemption', '1994', 'USA', '1994-10-14', 'Crime,Drama', '142 min', '9.3', 'Frank Darabont', 'Tim Robbins,Morgan Freeman,Bob Gunton']
 
-movie = creater.call(*data, g)
+movie = creater.new(*data, g)
 
 puts movie
+p '***************************'
+p '***************************'
+p '***************************'
+
+movi = Netflix.new(file_name)
+
+puts movi.show('10:00')
+puts movi.show('13:00')
+puts movi.show('21:00')
+begin
+    puts movi.show('03:00')
+  rescue StandardError
+    puts $ERROR_INFO.inspect
+  end

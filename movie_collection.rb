@@ -1,30 +1,12 @@
 require_relative 'movie.rb'
 require 'CSV'
-require_relative 'ancient_movie.rb'
-require_relative 'classic_movie.rb'
-require_relative 'modern_movie.rb'
-require_relative 'new_movie.rb'
-
 
 class MovieCollection
-  YEARS = (
-        (1900..1945).map{|el| [el, AncientMovie]} + 
-        (1945..1968).map{|el| [el, ClassicMovie]} + 
-        (1968..2000).map{|el| [el, ModernMovie]} + 
-        (2000..2020).map{|el| [el, NewMovie]}
-       ).to_h
-  
-  attr_reader :genres, :filter, :create_movie
-
-  def create_movie(year)
-    type = YEARS[year]
-    ->(*data) { type.new(*data) }
-  end
+    attr_reader :filter, :genres
 
   def initialize(path)
     @movies = IO.read(path).split("\n").map { |movie| movie.split('|') }.map do |movie|
-      creator = create_movie(movie[2].to_i)
-      creator.call(*movie, self)
+      Movie.choose_class_movie(movie[2].to_i).new(*movie, self)
     end
     @genres = @movies.flat_map(&:genre).uniq
     @fields = %(title year country genre rating director actors month).split

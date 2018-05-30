@@ -1,12 +1,13 @@
 require_relative '../movie_collection.rb'
+require_relative '../movie.rb'
 
 describe MovieCollection do
     let(:g) { MovieCollection.new('./movies.txt') }
     let(:data) { ['something', 'something', year, 'something', 'something', 'something', 'something', 'something', 'something', 'something'] }
     
-    let(:type_movie) { g.create_movie(year) }
+    let(:type_movie) { Movie.choose_class_movie(year) }
     
-    subject {type_movie.call(*data, g)}
+    subject {type_movie.new(*data, g)}
     
     context '1900-1945' do
         let(:year) { 1910 }
