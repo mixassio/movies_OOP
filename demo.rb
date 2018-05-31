@@ -51,7 +51,7 @@ begin
   rescue ArgumentError
     puts $ERROR_INFO.inspect
   end
-
+puts g.filter(genre: ["Adventure", "Comedy"])
 creater = Movie.choose_class_movie(1970)
 
 data = ['http://imdb.com/title/tt0111161/?ref_=chttp_tt_1', 'The Shawshank Redemption', '1994', 'USA', '1994-10-14', 'Crime,Drama', '142 min', '9.3', 'Frank Darabont', 'Tim Robbins,Morgan Freeman,Bob Gunton']
@@ -63,6 +63,7 @@ p '***************************'
 p '***************************'
 p '***************************'
 
+
 movi = Netflix.new(file_name)
 
 puts movi.show('10:00')
@@ -72,4 +73,10 @@ begin
     puts movi.show('03:00')
   rescue StandardError
     puts $ERROR_INFO.inspect
-  end
+end
+puts g.filter(title: 'The Terminator')
+begin
+    puts movi.when?('The Terminator')
+  rescue StandardError
+    puts $ERROR_INFO.inspect
+end
