@@ -6,11 +6,11 @@ class Movie
 
   attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :owner
 
-  YEARS = {1900..1945 => AncientMovie, 1945..1968 => ClassicMovie, 1968..2000 => ModernMovie, 2000..2020 => NewMovie}
+  YEARS = { 1900..1945 => AncientMovie, 1945..1968 => ClassicMovie, 1968..2000 => ModernMovie, 2000..2020 => NewMovie }.freeze
 
   def self.choose_class_movie(year)
-    type = YEARS.select{|el| el === year}.values.first
-    #->(*data) { type.new(*data) }
+    _, type = YEARS.detect { |period, val| period.cover?(year) }
+    type
   end
 
   def initialize(link, title, year, country, date, genre, time, rating, director, actors, owner) # rubocop:disable Metrics/MethodLength,Metrics/ParameterLists

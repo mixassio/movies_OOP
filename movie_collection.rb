@@ -2,7 +2,7 @@ require_relative 'movie.rb'
 require 'CSV'
 
 class MovieCollection
-    attr_reader :filter, :genres
+  attr_reader :filter, :genres
 
   def initialize(path)
     @movies = IO.read(path).split("\n").map { |movie| movie.split('|') }.map do |movie|
