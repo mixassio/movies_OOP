@@ -13,9 +13,10 @@ class Netflix < MovieCollection
   end
 
   def when?(title_name)
-    sheadule = HOURS_SHOW.reject do |_key, val|
-      (filter(val) & filter(title: title_name)).empty?
-    end
+    movie = filter(title: title_name).first
+    sheadule = HOURS_SHOW.select { |key, val|
+      filter(val).include?(movie)
+    }
     raise('this film is not in sheduale') if sheadule.empty?
     p 'This film you can show in time:'
     sheadule.map { |key, _val| key }.map { |el| "#{el.first}:00 - #{el.last}:00" }

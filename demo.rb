@@ -73,9 +73,10 @@ begin
 rescue StandardError
   puts $ERROR_INFO.inspect
 end
-puts g.filter(title: 'The Terminator')
+puts g.filter(title: 'Batman Begins')
 begin
-  puts movi.when?('The Terminator')
+  puts movi.when?('Batman Begins')
 rescue StandardError
   puts $ERROR_INFO.inspect
 end
+puts movi.when?('Laura')
