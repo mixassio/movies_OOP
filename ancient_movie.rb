@@ -6,9 +6,11 @@ class AncientMovie < Movie
     super
     @period = 'ancient'
   end
+
   def to_s
     "#{@title} - старый фильм (#{@year} год)"
   end
+
   def cost
     1
   end

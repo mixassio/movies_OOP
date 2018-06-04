@@ -10,9 +10,9 @@ class Netflix < MovieCollection
     _, filters = HOURS_SHOW.detect { |period, _value| period.cover?(select_time) }
     raise('theater is closed') unless filters
     movies = filter(filters)
-    _, movie = movies.map{|movie| [movie.rating.to_f*rand(10), movie]}.max_by{|rating, movie| rating}
+    _, movie = movies.map { |movie| [movie.rating.to_f * rand(10), movie] }.max_by { |rating, _movie| rating }
     current_time = Time.new
-    "Now showing: #{movie.title} #{current_time.strftime("%H:%M")} - #{(current_time + movie.time*60).strftime("%H:%M")}"
+    "Now showing: #{movie.title} #{current_time.strftime('%H:%M')} - #{(current_time + movie.time * 60).strftime('%H:%M')}"
   end
 
   def when?(title_name)

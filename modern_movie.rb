@@ -6,10 +6,11 @@ class ModernMovie < Movie
     super
     @period = 'modern'
   end
+
   def to_s
     "#{@title} - современное кино: играют #{@actors.join(', ')}"
   end
-  
+
   def cost
     3
   end

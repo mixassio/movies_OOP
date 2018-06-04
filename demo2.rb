@@ -1,7 +1,6 @@
 require_relative 'netflix.rb'
 require_relative 'theatre.rb'
 
-
 file_name = ARGV[0] || './movies.txt'
 abort 'No such file' unless File.file?(file_name)
 movies = Netflix.new(file_name)
