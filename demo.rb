@@ -80,3 +80,9 @@ rescue StandardError
   puts $ERROR_INFO.inspect
 end
 puts movi.when?('Laura')
+begin
+    puts movi.when?('The Terminator')
+  rescue StandardError
+    puts $ERROR_INFO.inspect
+  end
+  

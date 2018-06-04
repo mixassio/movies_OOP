@@ -4,12 +4,12 @@ class Movie
   require_relative 'modern_movie.rb'
   require_relative 'new_movie.rb'
 
-  attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :owner
+  attr_reader :link, :title, :year, :country, :date, :genre, :time, :rating, :director, :actors, :owner, :period
 
   YEARS = { 1900..1945 => AncientMovie, 1945..1968 => ClassicMovie, 1968..2000 => ModernMovie, 2000..2020 => NewMovie }.freeze
 
   def self.choose_class_movie(year)
-    _, type = YEARS.detect { |period, val| period.cover?(year) }
+    _, type = YEARS.detect { |period, _val| period.cover?(year) }
     type
   end
 
@@ -20,11 +20,12 @@ class Movie
     @country = country
     @date = date
     @genre = genre.split(',')
-    @time = time
+    @time = time[/\d+/].to_i
     @rating = rating
     @director = director
     @actors = actors.split(',')
     @owner = owner
+    @period = nil
   end
 
   def month
