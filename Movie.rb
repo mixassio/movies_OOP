@@ -25,7 +25,7 @@ class Movie
     @director = director
     @actors = actors.split(',')
     @owner = owner
-    @period = nil
+    @period = self.class.name[/(\w+)Movie/, 1]
   end
 
   def month
