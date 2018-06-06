@@ -1,5 +1,10 @@
 require_relative 'movie.rb'
 require_relative 'movie_collection.rb'
+require_relative 'ancient_movie.rb'
+require_relative 'classic_movie.rb'
+require_relative 'modern_movie.rb'
+require_relative 'new_movie.rb'
+require_relative 'netflix.rb'
 
 file_name = ARGV[0] || './movies.txt'
 abort 'No such file' unless File.file?(file_name)
@@ -44,5 +49,39 @@ end
 begin
     g.filter(tle: 'The Terminator')
   rescue ArgumentError
+    puts $ERROR_INFO.inspect
+  end
+puts g.filter(genre: %w[Adventure Comedy])
+creater = Movie.choose_class_movie(1970)
+
+data = ['http://imdb.com/title/tt0111161/?ref_=chttp_tt_1', 'The Shawshank Redemption', '1994', 'USA', '1994-10-14', 'Crime,Drama', '142 min', '9.3', 'Frank Darabont', 'Tim Robbins,Morgan Freeman,Bob Gunton']
+
+movie = creater.new(*data, g)
+
+puts movie
+p '***************************'
+p '***************************'
+p '***************************'
+
+movi = Netflix.new(file_name)
+
+puts movi.show('10:00')
+puts movi.show('13:00')
+puts movi.show('21:00')
+begin
+  puts movi.show('03:00')
+rescue StandardError
+  puts $ERROR_INFO.inspect
+end
+puts g.filter(title: 'Batman Begins')
+begin
+  puts movi.when?('Batman Begins')
+rescue StandardError
+  puts $ERROR_INFO.inspect
+end
+puts movi.when?('Laura')
+begin
+    puts movi.when?('The Terminator')
+  rescue StandardError
     puts $ERROR_INFO.inspect
   end
