@@ -1,6 +1,5 @@
 require_relative 'movie_collection.rb'
 
-
 class Theatre < MovieCollection
   HOURS_SHOW = { 6..12 => { year: 1900..1945 },
                  12..18 => { genre: /Adventure|Comedy/ },
@@ -20,7 +19,7 @@ class Theatre < MovieCollection
       filter(val).include?(movie)
     end
     raise('this film is not in sheduale') if sheadule.empty?
-    p 'This film you can show in time:'
-    sheadule.keys.map { |el| "#{el.first}:00 - #{el.last}:00" }
+    puts 'This film you can show in time:'
+    puts sheadule.keys.map { |el| "#{el.first}:00 - #{el.last}:00" }
   end
 end

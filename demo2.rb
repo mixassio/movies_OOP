@@ -19,6 +19,10 @@ begin
 rescue StandardError
   puts $ERROR_INFO.inspect
 end
+p '*********************************************************'
+p '*********************************************************'
+p '*********************************************************'
+
 movies2 = Netflix.new(file_name)
 puts movies2.how_much?('The Terminator')
 puts movies2.account
@@ -29,5 +33,6 @@ puts movies2.account
 p '*********************************************************'
 puts movies2.show(genre: 'Comedy', period: 'Modern')
 puts movies2.account
+p '*********************************************************'
 
-#puts movies.all
+puts movies.filter(genre: 'Comedy', period: 'Classic', director: 'William Wyler')

@@ -31,11 +31,13 @@ class MovieCollection
       acc.select { |el| el.matches?(key, val) }
     end
   end
+
   def get_random_movie(movies)
-    movies.max_by { |movie|  movie.rating.to_f * rand(10)}
+    movies.max_by { |movie| movie.rating.to_f * rand(10) }
   end
+
   def print_show(movie)
     current_time = Time.new
-    "Now showing: #{movie.title} #{current_time.strftime('%H:%M')} - #{(current_time + movie.time * 60).strftime('%H:%M')}"
+    puts "Now showing: #{movie.title} #{current_time.strftime('%H:%M')} - #{(current_time + movie.time * 60).strftime('%H:%M')}"
   end
 end
