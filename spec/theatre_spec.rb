@@ -1,7 +1,7 @@
 require_relative '../theatre.rb'
 require_relative '../movie.rb'
 require_relative '../movie_collection.rb'
-
+#spec
 describe Theatre do
   let(:file_name) { './movies.txt' }
   let(:theatre) { Theatre.new(file_name) }
