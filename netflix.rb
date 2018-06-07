@@ -1,15 +1,21 @@
 require 'time'
 require_relative 'movie_collection.rb'
+require_relative 'cashbox.rb'
 
 class Netflix < MovieCollection
-  attr_reader :account
-  def initialize(path)
-    super
-    @account = 0
+  include Cashbox
+  
+  def pay(money)
+    pay_to_cash(money)
   end
 
-  def pay(money)
-    @account += money
+  def cash
+    get_cash
+  end
+
+  def take(who)
+    raise('Alarm, police was caled!') if who != 'Bank'
+    incase
   end
 
   def show(filters)

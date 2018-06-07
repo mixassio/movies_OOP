@@ -63,25 +63,3 @@ p '***************************'
 p '***************************'
 p '***************************'
 
-movi = Netflix.new(file_name)
-
-puts movi.show('10:00')
-puts movi.show('13:00')
-puts movi.show('21:00')
-begin
-  puts movi.show('03:00')
-rescue StandardError
-  puts $ERROR_INFO.inspect
-end
-puts g.filter(title: 'Batman Begins')
-begin
-  puts movi.when?('Batman Begins')
-rescue StandardError
-  puts $ERROR_INFO.inspect
-end
-puts movi.when?('Laura')
-begin
-    puts movi.when?('The Terminator')
-  rescue StandardError
-    puts $ERROR_INFO.inspect
-  end

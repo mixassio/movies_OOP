@@ -2,8 +2,8 @@ require_relative 'movie.rb'
 require 'CSV'
 
 class MovieCollection
+  include Enumerable
   attr_reader :filter, :genres
-
   def initialize(path)
     @movies = IO.read(path).split("\n").map { |movie| movie.split('|') }.map do |movie|
       Movie.choose_class_movie(movie[2].to_i).new(*movie, self)
@@ -12,6 +12,10 @@ class MovieCollection
     @fields = %(title year country genre rating director actors month).split
   end
 
+  def each(&block)
+    @movies.each(&block)
+  end
+  
   def all
     @movies
   end
