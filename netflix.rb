@@ -1,10 +1,11 @@
 require 'time'
 require_relative 'movie_collection.rb'
 require_relative 'cashbox.rb'
+require 'Money'
 
 class Netflix < MovieCollection
   include Cashbox
-  
+
   def pay(money)
     pay_to_cash(money)
   end
@@ -21,8 +22,7 @@ class Netflix < MovieCollection
   def show(filters)
     movies = filter(filters)
     movie = get_random_movie(movies)
-    raise('No money, put your account') if @account - movie.cost < 0
-    @account -= movie.cost
+    pay(movie.cost)
     print_show(movie)
   end
 
@@ -30,4 +30,4 @@ class Netflix < MovieCollection
     movie = filter(title: title_name).first
     movie.cost
   end
-  end
+end

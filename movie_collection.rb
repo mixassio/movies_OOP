@@ -15,7 +15,7 @@ class MovieCollection
   def each(&block)
     @movies.each(&block)
   end
-  
+
   def all
     @movies
   end
@@ -30,6 +30,7 @@ class MovieCollection
   end
 
   def filter(field)
+    # p field
     field.reduce(@movies) do |acc, (key, val)|
       raise(ArgumentError, "filter #{key} not found") unless Movie.instance_methods(false).include?(key)
       acc.select { |el| el.matches?(key, val) }
