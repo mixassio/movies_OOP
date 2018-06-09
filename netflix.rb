@@ -4,17 +4,23 @@ require_relative 'cashbox.rb'
 require 'Money'
 
 class Netflix < MovieCollection
-  include Cashbox
-
-  def pay(money)
-    pay_to_cash(money)
+  extend Cashbox
+  attr_reader :account_user
+  def initialize(path)
+    super
+    @account_user = 0
   end
 
-  def cash
+  def pay(money)
+    self.class.pay_to_cash(money)
+    @account_user += money
+  end
+
+  def self.cash
     get_cash
   end
 
-  def take(who)
+  def self.take(who)
     raise('Alarm, police was caled!') if who != 'Bank'
     incase
   end
@@ -22,7 +28,8 @@ class Netflix < MovieCollection
   def show(filters)
     movies = filter(filters)
     movie = get_random_movie(movies)
-    pay(movie.cost)
+    raise('No money, put your account') if @account_user - movie.cost < 0
+    @account_user -= movie.cost
     print_show(movie)
   end
 

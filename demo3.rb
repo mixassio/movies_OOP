@@ -9,18 +9,9 @@ g = MovieCollection.new(file_name)
 puts g.map(&:title).first(10)
 puts g.select { |movie| movie.year == 1983 }
 
-movies = Netflix.new(file_name)
+movies1 = Netflix.new(file_name)
+movies2 = Netflix.new(file_name)
 
-p movies.cash
-movies.pay(10.00)
-p movies.cash
-movies.pay(10.00)
-p movies.cash
-# movies.take('Bank')
-p movies.cash
-movies.show(genre: 'Comedy', period: 'Modern')
-
-movies2 = Theatre.new(file_name)
-p movies2.cash
-puts movies2.show('13:00')
-p movies2.cash
+movies1.pay(13)
+movies2.pay(12)
+puts Netflix.cash
