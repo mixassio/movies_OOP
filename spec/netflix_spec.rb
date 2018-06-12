@@ -2,7 +2,7 @@ require_relative '../netflix.rb'
 require_relative '../movie.rb'
 require_relative '../movie_collection.rb'
 
-describe Netflix do
+describe MoviesTheatre::Netflix do
   let(:file_name) { './movies.txt' }
   let(:theatre1) { MoviesTheatre::Netflix.new(file_name) }
   let(:theatre2) { MoviesTheatre::Netflix.new(file_name) }

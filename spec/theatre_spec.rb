@@ -2,7 +2,7 @@ require_relative '../theatre.rb'
 require_relative '../movie.rb'
 require_relative '../movie_collection.rb'
 
-describe Theatre do
+describe MoviesTheatre::Theatre do
   let(:file_name) { './movies.txt' }
   let(:theatre1) { MoviesTheatre::Theatre.new(file_name) }
   let(:theatre2) { MoviesTheatre::Theatre.new(file_name) }

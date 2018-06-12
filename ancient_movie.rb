@@ -1,5 +1,6 @@
 require_relative 'movie.rb'
 
+module MoviesTheatre
 
 class AncientMovie < Movie
   def to_s
@@ -9,4 +10,5 @@ class AncientMovie < Movie
   def cost
     1
   end
+end
 end
