@@ -19,13 +19,17 @@ describe MoviesTheatre::Theatre do
   end
   describe 'money' do
     context 'cash desk' do
-      it { expect {
-        theatre1.show('21:00')
-        theatre1.show('10:00')
-      }.to change(theatre1, :cash).to("$13.00") }
-      it { expect {
-        theatre2.show('16:00')
-      }.to change(theatre2, :cash).to("$5.00") }
+      it {
+        expect do
+          theatre1.show('21:00')
+          theatre1.show('10:00')
+        end.to change(theatre1, :cash).to('$13.00')
+      }
+      it {
+        expect do
+          theatre2.show('16:00')
+        end.to change(theatre2, :cash).to('$5.00')
+      }
     end
     context 'incase' do
       before { theatre1.show('21:00') }
@@ -38,4 +42,3 @@ describe MoviesTheatre::Theatre do
     end
   end
 end
-

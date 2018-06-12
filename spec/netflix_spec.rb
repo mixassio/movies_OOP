@@ -10,12 +10,14 @@ describe MoviesTheatre::Netflix do
   describe 'money' do
     context 'add money same csh desk' do
       before { MoviesTheatre::Netflix.take('Bank') }
-      it { expect {
-        theatre1.pay(10)
-        theatre2.pay(20)
-      }.to change(MoviesTheatre::Netflix, :cash).to("$30.00") }
+      it {
+        expect do
+          theatre1.pay(10)
+          theatre2.pay(20)
+        end.to change(MoviesTheatre::Netflix, :cash).to('$30.00')
+      }
     end
-  
+
     context 'show and spend money' do
       before { theatre1.pay(10) }
       it { expect { theatre1.show(title: 'The Terminator') }.to change(theatre1, :account_user).from(10).to(7) }
@@ -34,4 +36,3 @@ describe MoviesTheatre::Netflix do
     end
   end
 end
-
