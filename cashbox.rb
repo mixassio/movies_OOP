@@ -11,12 +11,13 @@ module Cashbox
     @account = account + Money.from_amount(money, 'USD')
   end
 
-  def incase
+  def take(who)
+    raise('Alarm, police was caled!') if who != 'Bank'
     @account = Money.from_amount(0, 'USD')
     puts 'Encashment was carried out'
   end
 
-  def get_cash
+  def cash
     account.format
   end
 end

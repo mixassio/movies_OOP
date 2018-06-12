@@ -7,15 +7,6 @@ class Theatre < MovieCollection
                  12..18 => [5, { genre: /Adventure|Comedy/ }],
                  18..24 => [10, { genre: /Drama|Horror/ }] }.freeze
 
-  def cash
-    get_cash
-  end
-
-  def take(who)
-    raise('Alarm, police was caled!') if who != 'Bank'
-    incase
-  end
-
   def buy_ticket(money, title)
     p "you bought a ticket on #{title}"
     pay_to_cash(money)

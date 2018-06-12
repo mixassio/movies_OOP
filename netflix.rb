@@ -16,15 +16,6 @@ class Netflix < MovieCollection
     @account_user += money
   end
 
-  def self.cash
-    get_cash
-  end
-
-  def self.take(who)
-    raise('Alarm, police was caled!') if who != 'Bank'
-    incase
-  end
-
   def show(filters)
     movies = filter(filters)
     movie = get_random_movie(movies)

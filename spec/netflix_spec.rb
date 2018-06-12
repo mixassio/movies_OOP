@@ -8,13 +8,14 @@ describe Netflix do
   let(:theatre2) { Netflix.new(file_name) }
 
   describe 'money' do
-    context 'add money' do
-      it { expect { theatre1.pay(13) }.to change(theatre1, :account_user).from(0).to(13) }
-      it { expect { theatre2.pay(12) }.to change(theatre2, :account_user).from(0).to(12) }
+    context 'add money same csh desk' do
+      before { Netflix.take('Bank') }
+      it { expect {
+        theatre1.pay(10)
+        theatre2.pay(20)
+      }.to change(Netflix, :cash).to("$30.00") }
     end
-    context 'same csh desk' do
-      it { expect(Netflix.cash).to be == '$25.00' }
-    end
+  
     context 'show and spend money' do
       before { theatre1.pay(10) }
       it { expect { theatre1.show(title: 'The Terminator') }.to change(theatre1, :account_user).from(10).to(7) }
@@ -33,3 +34,4 @@ describe Netflix do
     end
   end
 end
+
