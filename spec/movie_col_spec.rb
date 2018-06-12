@@ -1,8 +1,8 @@
 require_relative '../movie_collection.rb'
 
-describe MovieCollection do
+describe MoviesTheatre::MovieCollection do
   let(:file_name) { './movies.txt' }
-  let(:movies) { MovieCollection.new(file_name) }
+  let(:movies) { MoviesTheatre::MovieCollection.new(file_name) }
   it 'all has 250 objects' do
     expect(movies.all.length).to eq(250)
   end
