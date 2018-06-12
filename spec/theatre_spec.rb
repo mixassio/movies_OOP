@@ -4,8 +4,8 @@ require_relative '../movie_collection.rb'
 
 describe Theatre do
   let(:file_name) { './movies.txt' }
-  let(:theatre1) { Theatre.new(file_name) }
-  let(:theatre2) { Theatre.new(file_name) }
+  let(:theatre1) { MoviesTheatre::Theatre.new(file_name) }
+  let(:theatre2) { MoviesTheatre::Theatre.new(file_name) }
 
   describe 'show' do
     context 'stdout' do

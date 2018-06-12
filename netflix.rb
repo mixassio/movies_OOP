@@ -3,6 +3,8 @@ require_relative 'movie_collection.rb'
 require_relative 'cashbox.rb'
 require 'Money'
 
+module MoviesTheatre
+
 class Netflix < MovieCollection
   extend Cashbox
   attr_reader :account_user
@@ -28,4 +30,5 @@ class Netflix < MovieCollection
     movie = filter(title: title_name).first
     movie.cost
   end
+end
 end

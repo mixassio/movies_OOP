@@ -1,5 +1,7 @@
 require_relative 'movie_collection.rb'
 
+module MoviesTheatre
+
 class Theatre < MovieCollection
   include Cashbox
 
@@ -31,4 +33,5 @@ class Theatre < MovieCollection
     puts 'This film you can show in time:'
     puts sheadule.keys.map { |el| "#{el.first}:00 - #{el.last}:00" }
   end
+end
 end

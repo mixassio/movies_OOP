@@ -1,12 +1,13 @@
 require_relative 'movie.rb'
 require 'CSV'
+module MoviesTheatre
 
 class MovieCollection
   include Enumerable
   attr_reader :filter, :genres
   def initialize(path)
     @movies = IO.read(path).split("\n").map { |movie| movie.split('|') }.map do |movie|
-      Movie.choose_class_movie(movie[2].to_i).new(*movie, self)
+      MoviesTheatre::Movie.choose_class_movie(movie[2].to_i).new(*movie, self)
     end
     @genres = @movies.flat_map(&:genre).uniq
     @fields = %(title year country genre rating director actors month).split
@@ -32,7 +33,7 @@ class MovieCollection
   def filter(field)
     # p field
     field.reduce(@movies) do |acc, (key, val)|
-      raise(ArgumentError, "filter #{key} not found") unless Movie.instance_methods(false).include?(key)
+      raise(ArgumentError, "filter #{key} not found") unless MoviesTheatre::Movie.instance_methods(false).include?(key)
       acc.select { |el| el.matches?(key, val) }
     end
   end
@@ -45,4 +46,5 @@ class MovieCollection
     current_time = Time.new
     puts "Now showing: #{movie.title} #{current_time.strftime('%H:%M')} - #{(current_time + movie.time * 60).strftime('%H:%M')}"
   end
+end
 end

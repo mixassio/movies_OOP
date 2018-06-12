@@ -1,3 +1,5 @@
+module MoviesTheatre
+
 class Movie
   require_relative 'ancient_movie.rb'
   require_relative 'classic_movie.rb'
@@ -48,4 +50,5 @@ class Movie
     field = send(key)
     Array(field).any? { |le| val === le }
   end
+end
 end
